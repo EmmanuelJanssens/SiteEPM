@@ -5,9 +5,9 @@ $titre ='Plateforme échanges fiches techniques - Accueil';
 ob_start();
 ?>
 
-    <header>
-        <h2>Plateforme d'échanges de fiches techniques</h2>
-    </header>
+<header>
+    <h2>Plateforme d'échanges de fiches techniques</h2>
+</header>
 
     <p>
         Ce site est réservé pour la classe de 3ème de l'EPM. Il permet aux élèves de trouver :
@@ -27,4 +27,3 @@ ob_start();
 
 $contenu = ob_get_clean();
 require "gabarit.php";
-?>

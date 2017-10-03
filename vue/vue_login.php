@@ -1,6 +1,4 @@
 <?php
-
-
 $titre ='Plateforme échanges fiches techniques - Login';
 
 // Tampon de flux stocké en mémoire
@@ -49,6 +47,3 @@ if (isset($msg_err) && !empty($msg_err)) {
 
 $contenu = ob_get_clean();
 require "gabarit.php";
-
-
-?>
