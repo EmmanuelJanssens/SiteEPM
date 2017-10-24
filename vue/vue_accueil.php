@@ -3,6 +3,14 @@ $titre ='Plateforme échanges fiches techniques - Accueil';
 
 // Tampon de flux stocké en mémoire
 ob_start();
+
+if(!isset($_SESSION['login']))
+{
+    require 'vue_login.php';
+}
+else
+{
+
 ?>
 
     <header>
@@ -19,7 +27,6 @@ ob_start();
         <li>des informations sur des thèmes culinaires</li>
     </ul>
 
-    Veuillez vous connecter pour avoir accès au site à l'aide du menu "login".
     </p>
 
 
@@ -27,4 +34,5 @@ ob_start();
 
 $contenu = ob_get_clean();
 require "gabarit.php";
+}
 ?>

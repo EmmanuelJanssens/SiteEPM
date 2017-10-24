@@ -5,7 +5,8 @@
  * Date: 05.09.2017
  * Time: 14:02
  */
-
+ session_start();
+ 
 // connexion au serveur MySQL et à la BD
 // sortie : $connexion
 function getBD() {
