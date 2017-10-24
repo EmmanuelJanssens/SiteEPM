@@ -8,7 +8,6 @@
     <h1 class="titrePage" >Divers</h1>
 
     <form>
-
         <div id="formDivers">
             <input type="submit" value="Ajouter" name="ajouterFichierDivers">
             <input type="text" name="rechercherDivers">
@@ -29,7 +28,7 @@
                 echo '<br>';
             }
         }
-        if($_GET['action'] == 'afficherPDF')
+        if($_GET['action'] == 'afficherContenuDivers')
         {
             echo '<embed src="'.$_GET["fichier"].'" />';
         }

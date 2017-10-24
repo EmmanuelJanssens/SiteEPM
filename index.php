@@ -28,14 +28,27 @@ try
             case 'docEnseignant':
                 docEnseignant();
                 break;
+            case 'afficherFichierDocEnseignant':
+                afficherRechercheDocEnseignant();
+                break;
+                case 'rechercheDocEnseignant':
+                if(isset($_POST['annee']))
+                {
+                    rechercheDocEnseignant($_POST['annee']);
+                }
+                else
+                {
+                    accueil();
+                }
+                break;
             case 'contenuPed':
                 contenuPed();
                 break;
             case 'recette':
                 recette();
                 break;
-            case 'afficherPDF':
-                afficherPDF();
+            case 'afficherContenuDivers':
+            afficherContenuDivers();
                 break;
 
             default :
