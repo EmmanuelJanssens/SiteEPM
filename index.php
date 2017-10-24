@@ -37,6 +37,9 @@ try
             case 'recette':
                 recette();
                 break;
+            case 'afficherFilm':
+                afficherFilm();
+                break;
             default :
                 throw new Exception("action non valide");
         }

@@ -6,12 +6,26 @@
     <!-- Nav -->
     <nav id="nav">
     <ul>
+        <?php
+            if(!isset($_SESSION['login']))
+            {
+                ?>
+                        <li><a href="index.php?action=login">Login</a></li>
+                <?php
+            }
+            else
+            {
+        ?>
         <li class="current"><a href="index.php?action=recette">Recette</a></li>
         <li><a href="index.php?action=film">Film</a></li>
-        <li><a href="index.php?action=docEnseigant">Enseignant</a></li>
+        <li><a href="index.php?action=docEnseignant">Enseignant</a></li>
         <li><a href="index.php?action=contenuPed">Contenu Pédagogique</a></li>
         <li><a href="index.php?action=photos">Photos</a></li>
         <li><a href="index.php?action=divers">Divers</a></li>
+        <?php
+            }
+        ?>
+
 
     </ul>
     </nav>

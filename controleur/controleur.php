@@ -25,6 +25,8 @@ function login()
                 //on peut accéder au site. Attention ni la vue ni la fonction ci-dessous n'existe pas encore
                 //$resultats = getTypeRecette();
                 //require "vue/vue_liste_recettes.php";
+                $_SESSION["login"]=$login;
+                accueil();
             } else {
                 $msg_err= 'Le mot de passe est incorrect';
                 require "vue/vue_login.php";
@@ -44,7 +46,9 @@ function login()
     }
     function film()
     {
-        require "vue/vue_films.php";
+        $typeFilm = getTypeFilm();
+        $annees = getAnnee();
+        require "vue/vue_film.php";
     }
     function photos()
     {
@@ -63,7 +67,10 @@ function login()
         require "vue/vue_recette.php";
     }
 
-    function filtrerPhotos()
+/**
+ *
+ */
+function filtrerPhotos()
     {
         //Contenu//
 
@@ -117,8 +124,13 @@ function login()
         if(isset($_GET['image']))
         {
             $img = $_GET['image'];
-            $resultat ='<img src="'.$img.'"  style ="width: 400px; height :auto" >';
             require "vue/vue_photos.php";
         }
     }
-    ?>
+function afficherFilm()
+    {
+        $typeFilm = getTypeFilm();
+        $annees = getAnnee();
+    }
+
+?>
