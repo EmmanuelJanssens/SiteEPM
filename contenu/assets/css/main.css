@@ -1774,7 +1774,7 @@
 
 	input[type="button"],
 	input[type="submit"],
-	input[type="reset"],
+	input[type="reset"],	
 	button,
 	.button {
 		cursor: pointer;
@@ -1812,7 +1812,7 @@
 		input[type="reset"]:hover,
 		button:hover,
 		.button:hover {
-			background-color: #d95673;
+			background-color: #c94663;
 		}
 
 		input[type="button"]:active,
@@ -1820,7 +1820,7 @@
 		input[type="reset"]:active,
 		button:active,
 		.button:active {
-			background-color: #b93653;
+			background-color: #c94663;
 		}
 
 		input[type="button"].alt,
@@ -1828,7 +1828,7 @@
 		input[type="reset"].alt,
 		button.alt,
 		.button.alt {
-			background-color: #364050;
+			background-color: #c94663;
 		}
 
 			input[type="button"].alt:hover,
@@ -1836,7 +1836,7 @@
 			input[type="reset"].alt:hover,
 			button.alt:hover,
 			.button.alt:hover {
-				background-color: #465060;
+				background-color: #c94663;
 			}
 
 			input[type="button"].alt:active,
@@ -1844,7 +1844,7 @@
 			input[type="reset"].alt:active,
 			button.alt:active,
 			.button.alt:active {
-				background-color: #263040;
+				background-color: #c94663;
 			}
 
 /* List */
@@ -2931,3 +2931,9 @@
 			}
 
 	}
+
+embed{
+	padding: 10px;
+	width: 100%;
+	height:800px;
+}

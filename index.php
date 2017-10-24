@@ -16,7 +16,37 @@ try
             case 'login' :
                 login(); //appel de la fonction dans le controleur
                 break;
-
+            case 'divers':
+                divers();
+                break;
+            case 'photos':
+                photos();
+                break;
+            case 'film':
+                film();
+                break;
+            case 'docEnseignant':
+                docEnseignant();// AJOUTER LA FONCTION DE LA DOCUMENTATION ENSEIGNANT
+                break;
+            case 'rechercheDocEnseignant':
+                if(isset($_POST['annee']) && isset($_POST['semaines']))
+                {
+                    rechercheDocEnseignant($_POST['annee'],$_POST['semaines']);
+                }
+                else
+                {
+                    accueil();
+                }
+                break;
+            case 'afficherFichierDocEnseignant':
+                afficherRechercheDocEnseignant();
+                break;
+            case 'contenuPed':
+                contenuPed();
+                break;
+            case 'recette':
+                recette();
+                break;
             default :
                 throw new Exception("action non valide");
         }

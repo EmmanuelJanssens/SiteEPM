@@ -3,7 +3,20 @@ $titre ='Plateforme échanges fiches techniques - Accueil';
 
 // Tampon de flux stocké en mémoire
 ob_start();
-?>
+
+if(!isset($_SESSION['login']))
+{
+    ?>
+    <p> Pour avoir accès au site veuillez vous connecter </P>
+    <form method="post" action="index.php?action=login">
+        <input type="submit" name="connecter" value="Se connecter">
+    </form>
+    <?php
+}
+else
+{
+
+    ?>
 
     <header>
         <h2>Plateforme d'échanges de fiches techniques</h2>
@@ -19,12 +32,11 @@ ob_start();
         <li>des informations sur des thèmes culinaires</li>
     </ul>
 
-    Veuillez vous connecter pour avoir accès au site à l'aide du menu "login".
     </p>
 
 
-<?php
-
+    <?php
+}
 $contenu = ob_get_clean();
 require "gabarit.php";
 ?>
