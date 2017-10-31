@@ -22,7 +22,7 @@ function getBD() {
 function getPwdFromLogin($login)
 {
     $connexion = getBD();
-    $requete = "SELECT idUser, pwd FROM rights WHERE login='" . $login . "'";
+    $requete = "SELECT login, pwd FROM login WHERE login='" . $login . "'";
     $resultats = $connexion->query($requete);
     if ($donnees = $resultats->fetch()) {
         return $donnees['pwd'];
