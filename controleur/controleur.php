@@ -46,11 +46,115 @@ function film()
 {
     require "vue/vue_films.php";
 }
-function photo()
+function filtrerPhotos()
+{
+    //Contenu//
+    $resultat = array();
+    //recupère le type de filtre choisi
+    if(isset($_GET['type']))
+    {
+        $dir = "";
+        switch($_GET['type'])
+        {
+            case 'grandsChefs':
+                $dir = "grandChefs";
+                break;
+            case 'appPratique';
+                $dir = "applicationPratique/".$_GET['annee'];
+                break;
+        }
+        //Faire un tableau avec les extensions possibles; jpg,jpeg,png,gif
+        $extensions = array("jpg","jpeg","png","gif","JPG");
+        //le chemin du répertoire complet
+        $fulldir = "Donnees/Photos/".$dir;
+        //si le répertoire existe
+        
+        if (is_dir($fulldir))
+        {
+            
+            if ($dh = opendir($fulldir))
+            {
+                //on lit tout ce qui se trouve dans le dossier
+                while (($file = readdir($dh)) !== false)
+                {
+                    if(file_exists($fulldir.'/'.$file))
+                    {
+                        $info = pathinfo($fulldir.'/'.$file);
+                        if(is_dir($fulldir.'/'.$file))
+                        {
+                            //DO NOTHING
+                        }
+                        else if(in_array($info['extension'],$extensions) && isset($info['extension']))
+                        {
+                            $lien = '<a href="index.php?action=filtrerPhotos&image='.$fulldir.'/'.$file.'" > <img src="'.$fulldir.'/'.$file.'" style ="width: 100px; height :100px"></a>';
+                            array_push($resultat,$lien);
+                            
+                        }
+                    }
+                    
+                }
+                closedir($dh);
+            }
+        }
+
+        require "vue/vue_photos.php";
+    }
+    if(isset($_GET['image']))
+    {
+        $img = $_GET['image'];
+        require "vue/vue_photos.php";
+    }
+}
+function photos()
 {
     require "vue/vue_photos.php";
 }
 function docEnseignant()
+{
+    require "vue/vue_docEnseignant.php";
+}
+function rechercheDocEnseignant( $annee,$semaines)
+{
+    $resultats = array();
+    $resultatsRecherche = GetAnnees($annee,$semaines);
+    
+    $fulldir = 'Donnees/DocEnseignant/'.$resultatsRecherche;
+    $extensions = array("pdf");
+    $test = getcwd (  );
+    if(is_dir($fulldir))
+    {
+        if($dh = opendir(($fulldir)))
+        {
+            //Lecture du répertoire en entier (fichier et dossier confondus)
+            while(($file = readdir($dh)) !== false)
+            {
+                //Verification de l'existence du fichier
+                if(file_exists($fulldir.'/'.$file))
+                {
+                    $infoFichier = pathinfo($fulldir.'/'.$file);
+                    if(is_dir($fulldir.'/'.$file))
+                    {
+                        //
+                    }
+                    else
+                    {
+                        $res = '<a href="index.php?action=afficherFichierDocEnseignant&fichier='.$fulldir.'/'.$file.'" >'.$file.'</a>';
+                        array_push($resultats,$res);
+                    }
+                }
+            }
+        }
+        closedir($dh);
+    }
+    else
+    {
+        $res = "Erreur ---". $fulldir;
+        array_push($resultats,$res);
+        
+    }
+    require "vue/vue_docEnseignant.php";
+}
+function afficherRechercheDocEnseignant()
 {
     require "vue/vue_docEnseignant.php";
 }
@@ -73,7 +177,7 @@ function divers()
         //Faire un tableau avec les extensions possibles; jpg,jpeg,png,gif
         $extensions = array("pdf");
         //le chemin du répertoire complet
-        $fulldir = "data/Corbeille/Documentation";
+        $fulldir = "Donnees/Corbeille/Documentation";
         //si le répertoire existe
         if (is_dir($fulldir))
         {

@@ -19,6 +19,9 @@ try
             case 'divers':
                 divers();
                 break;
+            case 'filtrerPhotos':
+                filtrerPhotos();
+                break;
             case 'photos':
                 photos();
                 break;
@@ -26,7 +29,20 @@ try
                 film();
                 break;
             case 'docEnseignant':
-                docEnseignant();
+                docEnseignant();// AJOUTER LA FONCTION DE LA DOCUMENTATION ENSEIGNANT
+                break;
+            case 'rechercheDocEnseignant':
+                if(isset($_POST['annee']) && isset($_POST['semaines']))
+                {
+                    rechercheDocEnseignant($_POST['annee'],$_POST['semaines']);
+                }
+                else
+                {
+                    accueil();
+                }
+                break;
+            case 'afficherFichierDocEnseignant':
+                afficherRechercheDocEnseignant();
                 break;
             case 'contenuPed':
                 contenuPed();
